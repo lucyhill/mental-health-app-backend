@@ -4,18 +4,27 @@ const User = require('./User.js');
 const Journal = require('./Journal.js');
 const MoodTracker = require('./MoodTracker.js');
 
-
+var store = new MongoDBStore({
+    uri: 'mongodb://localhost:27017/connect_mongodb_session_test',
+    collection: 'mySessions'
+  });
+   
+  // Catch errors
+  store.on('error', function(error) {
+    console.log(error);
+  });
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-const expressSession = require('express-session');
+const session = require('express-session');
 
-    app.use(expressSession({
+    app.use(session({
         name: "mentalHealthAppSession",
         secret: "aksjdlkasjdlaj",
         resave: false,
-        saveUninitialized: false
+        saveUninitialized: false,
+        store: store
     }));
 
 app.post('/login', (req,res) => {
