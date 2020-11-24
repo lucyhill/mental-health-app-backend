@@ -64,7 +64,7 @@ app.get('/', (req, res)=> {
 // create user
 
 app.post('/user', (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
+    
     let u = User.create(req.params.username, req.params.password, req.params.fname, req.params.lname);
     if (u==null) {
         res.status(400).send("Bad Request");
