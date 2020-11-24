@@ -10,8 +10,6 @@ var sessionstore = require('sessionstore');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-
-
     app.use(session({
         name: "mentalHealthAppSession",
         secret: "aksjdlkasjdlaj",
@@ -47,10 +45,12 @@ app.post('/login', (req,res) => {
 app.get('/logout', (req, res) => {
     delete req.session.user;
     res.json(true);
+    return;
 })
 
 app.get('/', (req, res)=> {
     res.json(true);
+    return;
 })
 
 
