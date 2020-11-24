@@ -48,8 +48,8 @@ Journal.create = (user_id, body) => {
     Journal.next_id += 1;
     let d = new Date(Date.now());
     let j = new Journal(id, user_id, body, d);
-    let u = User.findByUsername(user_id);
-    if (u !== null) {u.addJournal(j);}
+    // let u = User.findByUsername(user_id);
+    // if (u !== null) {u.addJournal(j);}
     journal_data.set(j.id.toString(), j);
     return j;
 }
