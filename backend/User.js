@@ -7,8 +7,8 @@ class User {
         this.fname = fname;
         this.lname = lname;
 
-        this.journals = [];
-        this.moodTrackers = [];
+        this.journals = new Array;
+        this.moodTrackers = new Array;
     }
 
     update() {
