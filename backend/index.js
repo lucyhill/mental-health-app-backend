@@ -7,10 +7,10 @@ const MoodTracker = require('./MoodTracker.js');
 var sessionstore = require('sessionstore');
 const cors = require('cors')
 
-const cors_options = {
-  origin: 'http://example.com',
-  credentials: true
-}
+//const cors_options = {
+  //origin: 'http://example.com',
+  //credentials: true
+//}
 app.use(cors(cors_options));
 
 
