@@ -34,9 +34,10 @@ app.use(bodyParser.json());
       });
 
 app.post('/login', (req,res) => {
+    res.set('Access-Control-Allow-Origin', '*');
 
-    let username = req.params.username;
-    let password = req.params.password;
+    let username = req.body.username;
+    let password = req.body.password;
 
     let user_data = User.findByUsername(username);
     if (user_data == null) {
