@@ -26,6 +26,11 @@ app.use(bodyParser.json());
         }
     }));
 
+    app.use((req, res, next) => {
+        res.header('Access-Control-Allow-Origin', '*');
+        next();
+      });
+
 app.post('/login', (req,res) => {
 
     let username = req.params.username;
