@@ -8,7 +8,7 @@ var sessionstore = require('sessionstore');
 const cors = require('cors')
 
 const cors_options = {
-  origin: 'https://mental-health-app-backend.herokuapp.com',
+  origin: 'http://example.com',
   credentials: true
 }
 app.use(cors(cors_options));
@@ -64,6 +64,7 @@ app.get('/', (req, res)=> {
 // create user
 
 app.post('/user', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     
     let u = User.create(req.params.username, req.params.password, req.params.fname, req.params.lname);
     if (u==null) {
