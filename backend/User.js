@@ -58,7 +58,7 @@ User.findByUsername = (username) => {
 
 User.create = (username, password, fname, lname) => {
     let u = new User(username, password, fname, lname);
-    user_data.set(u.username, u);
+    user_data.set(username, u);
     return u;
 }
 
