@@ -26,7 +26,6 @@ app.use(bodyParser.json());
         secret: "aksjdlkasjdlaj",
         resave: false,
         saveUninitialized: false,
-        store : my_store,
         proxy : true, // add this when behind a reverse proxy, if you need secure cookies
         cookie : {
             secure : true,
