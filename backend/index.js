@@ -60,7 +60,7 @@ app.get('/', (req, res)=> {
 // create user
 
 app.post('/user', (req, res) => {
-    res.append("Access-Control-Allow-Origin", "*");
+    res.set('Access-Control-Allow-Origin', '*');
     
     let u = User.create(req.params.username, req.params.password, req.params.fname, req.params.lname);
     if (u==null) {
