@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const app = express();
 const User = require('./User.js');
 const Journal = require('./Journal.js');
@@ -18,7 +19,7 @@ var store = new MongoDBStore({
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-const session = require('express-session');
+
 
     app.use(session({
         name: "mentalHealthAppSession",
