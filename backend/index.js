@@ -4,17 +4,8 @@ const app = express();
 const User = require('./User.js');
 const Journal = require('./Journal.js');
 const MoodTracker = require('./MoodTracker.js');
-const MongoDBStore = require('connect-mongodb-session')(session);
+var sessionstore = require('sessionstore');
 
-var my_store = new MongoDBStore({
-    uri: 'mongodb://127.0.0.1:27017/connect_mongodb_session_test',
-    collection: 'mySessions'
-  });
-   
-  // Catch errors
-  my_store.on('error', function(error) {
-    console.log(error);
-  });
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -26,6 +17,7 @@ app.use(bodyParser.json());
         secret: "aksjdlkasjdlaj",
         resave: false,
         saveUninitialized: false,
+        store: sessionstore.createSessionStore(),
         proxy : true, // add this when behind a reverse proxy, if you need secure cookies
         cookie : {
             secure : true,
