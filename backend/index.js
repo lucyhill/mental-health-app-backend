@@ -12,7 +12,7 @@ var my_store = new MongoDBStore({
   });
    
   // Catch errors
-  store.on('error', function(error) {
+  my_store.on('error', function(error) {
     console.log(error);
   });
 
@@ -29,9 +29,9 @@ app.use(bodyParser.json());
         store : my_store,
         proxy : true, // add this when behind a reverse proxy, if you need secure cookies
         cookie : {
-        secure : true,
-        maxAge: 5184000000 // 2 months
-    }
+            secure : true,
+            maxAge: 5184000000 // 2 months
+        }
     }));
 
 app.post('/login', (req,res) => {
