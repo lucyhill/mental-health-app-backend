@@ -8,7 +8,7 @@ var sessionstore = require('sessionstore');
 const cors = require('cors')
 
 const cors_options = {
-  origin: 'http://example.com',
+  origin: 'https://mental-health-app-backend.herokuapp.com/',
   credentials: true
 }
 app.use(cors(cors_options));
