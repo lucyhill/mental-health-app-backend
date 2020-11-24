@@ -5,6 +5,13 @@ const User = require('./User.js');
 const Journal = require('./Journal.js');
 const MoodTracker = require('./MoodTracker.js');
 var sessionstore = require('sessionstore');
+const cors = require('cors')
+
+const cors_options = {
+  origin: 'http://example.com',
+  credentials: true
+}
+app.use(cors(cors_options));
 
 
 const bodyParser = require('body-parser');
@@ -57,7 +64,7 @@ app.get('/', (req, res)=> {
 // create user
 
 app.post('/user', (req, res) => {
-    
+    res.header("Access-Control-Allow-Origin", "*");
     let u = User.create(req.params.username, req.params.password, req.params.fname, req.params.lname);
     if (u==null) {
         res.status(400).send("Bad Request");
@@ -259,8 +266,4 @@ app.delete('/moodtracker/:id', (req, res)=> {
 //delete specific journal (and remove from user's array)
 //delete specific moodTracker (and remove from user's array)
 
-
-// const port = 3030;
-// app.listen(port, () => {
-//     console.log("Tutorial1 up and running on port " + port);
-// });
+// 
