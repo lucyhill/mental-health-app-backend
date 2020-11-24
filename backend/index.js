@@ -6,8 +6,8 @@ const Journal = require('./Journal.js');
 const MoodTracker = require('./MoodTracker.js');
 const MongoDBStore = require('connect-mongodb-session')(session);
 
-var store = new MongoDBStore({
-    uri: 'mongodb://localhost:27017/connect_mongodb_session_test',
+var my_store = new MongoDBStore({
+    uri: 'mongodb://127.0.0.1:27017/connect_mongodb_session_test',
     collection: 'mySessions'
   });
    
@@ -26,7 +26,12 @@ app.use(bodyParser.json());
         secret: "aksjdlkasjdlaj",
         resave: false,
         saveUninitialized: false,
-        store: store
+        store : my_store,
+        proxy : true, // add this when behind a reverse proxy, if you need secure cookies
+        cookie : {
+        secure : true,
+        maxAge: 5184000000 // 2 months
+    }
     }));
 
 app.post('/login', (req,res) => {
@@ -50,6 +55,10 @@ app.post('/login', (req,res) => {
 
 app.get('/logout', (req, res) => {
     delete req.session.user;
+    res.json(true);
+})
+
+app.get('/', (req, res)=> {
     res.json(true);
 })
 
