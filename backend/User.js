@@ -6,8 +6,8 @@ class User {
         this.password = password;
         this.fname = fname;
         this.lname = lname;
-
-        this.journals = new Array;
+        var journals = new Array();
+        this.journals = journals;
         this.moodTrackers = new Array;
     }
 
