@@ -266,4 +266,4 @@ app.delete('/moodtracker/:id', (req, res)=> {
 //delete specific journal (and remove from user's array)
 //delete specific moodTracker (and remove from user's array)
 
-// 
+app.listen(process.env.PORT || 3030);
