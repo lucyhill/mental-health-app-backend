@@ -50,6 +50,7 @@ User.findByUsername = (username) => {
         let x = new User(udata.username, udata.password, udata.fname, udata.lname);
         x.journals = udata.journals;
         x.moodTrackers = udata.moodTrackers;
+        return x;
     }
     return null;
 };
