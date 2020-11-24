@@ -3,6 +3,7 @@ const app = express();
 const User = require('./User.js');
 const Journal = require('./Journal.js');
 const MoodTracker = require('./MoodTracker.js');
+const MongoDBStore = require('connect-mongodb-session')(session);
 
 var store = new MongoDBStore({
     uri: 'mongodb://localhost:27017/connect_mongodb_session_test',
