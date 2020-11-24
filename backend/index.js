@@ -81,11 +81,11 @@ app.post('/user', (req, res) => {
 // create journal (then update user's journal array)
 
 app.post('/journal', (req, res) => {
-    if (req.session.user == undefined) {
-        res.status(403).send("Unauthorized");
-        return;
-    }
-    let j = Journal.create(req.session.user, req.body);
+    // if (req.session.user == undefined) {
+    //     res.status(403).send("Unauthorized");
+    //     return;
+    // }
+    let j = Journal.create(req.session.user, req.body.body);
 
     if (j==null) {
         res.status(400).send("Bad Request");
